@@ -1,0 +1,29 @@
+# Build
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Test
+TestResults/
+coverage/
+
+# Secrets
+appsettings.Development.json
+secrets.json
+
+# Publish
+publish/
+artifacts/
