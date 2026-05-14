@@ -2,7 +2,26 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+builder.Services.AppDbContext<AppDbContext>(options => 
+options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<ICategoriaRepositories, CategoriaRepositories>();
+builder.Services.AddScoped<IDetalleFacturaRepositories, DetalleFacturaRepositories>();
+builder.Services.AddScoped<IFacturaRepositories, FacturaRepositories>();
+builder.Services.AddScoped<IMovimientoRepositories, MovimientoRepositories>();
+builder.Services.AddScoped<IProductoRepositories, ProductoRepositories>();
+builder.Services.AddScoped<IProveedorRepositories, ProveedorRepositories>();
+builder.Services.AddScoped<IUsuarioRepositories, UsuarioRepositories>();
+
+builder.Services.AddScoped<ICategoriaServices, CategoriaServices>();
+builder.Services.AddScoped<IDetalleFacturaServices, DetalleFacturaServices>();
+builder.Services.AddScoped<IFacturaServices, FacturaServices>();
+builder.Services.AddScoped<IMovimientoServices, MovimientoServices>();
+builder.Services.AddScoped<IProductoServices, ProductoServices>();
+builder.Services.AddScoped<IProveedorServices, ProveedorServices>();
+builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
 
 var app = builder.Build();
 
