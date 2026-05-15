@@ -49,7 +49,6 @@ public class MovimientoServices : IMovimientoServices{
         };
         await _movimientoRepositories.Crear(movimientoDTOs);
     }
-    
     public async Task Eliminar(int Id){
         var movimiento = await _movimientoRepositories.ObtenerPorId(Id);
         if (movimiento == null){
