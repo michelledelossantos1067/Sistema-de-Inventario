@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SistemaInventario.Application.Interfaces.Services;
 using SistemaInventario.Models.DTOs.Categoria;
+namespace SistemaInventario.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

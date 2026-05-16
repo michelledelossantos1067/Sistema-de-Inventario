@@ -47,7 +47,6 @@ public class ProductoServices : IProductoServices{
             MedidaUnidad = createProductoDTOs.MedidaUnidad,
             PrecioVenta = createProductoDTOs.PrecioVenta,
             PrecioCompra = createProductoDTOs.PrecioCompra,
-            StockMinimo = createProductoDTOs.StockMinimo,
             ImagenUrl = createProductoDTOs.ImagenUrl,
             CategoriaId = createProductoDTOs.CategoriaId,
             ProveedorId = createProductoDTOs.ProveedorId
@@ -66,7 +65,6 @@ public class ProductoServices : IProductoServices{
         productos.MedidaUnidad = updateProductoDTOs.MedidaUnidad;
         productos.PrecioVenta = updateProductoDTOs.PrecioVenta;
         productos.PrecioCompra = updateProductoDTOs.PrecioCompra;
-        productos.StockMinimo = updateProductoDTOs.StockMinimo;
         productos.ImagenUrl = updateProductoDTOs.ImagenUrl;
         productos.CategoriaId = updateProductoDTOs.CategoriaId;
         productos.ProveedorId = updateProductoDTOs.ProveedorId;

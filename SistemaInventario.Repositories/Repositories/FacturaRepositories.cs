@@ -35,7 +35,7 @@ public class FacturaRepositories : IFacturaRepositories{
     }
     public async Task Eliminar(int Id){
         var factura = await _context.Facturas.FindAsync(Id);
-        if (factura == null){
+        if(factura == null){
             throw new Exception("El factura no existe.");
         };
         _context.Remove(factura);

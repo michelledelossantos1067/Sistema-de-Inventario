@@ -30,11 +30,9 @@ public class ProductoRepositories : IProductoRepositories{
         productos.Codigo = producto.Codigo;
         productos.Nombre = producto.Nombre;
         productos.Descripcion = producto.Descripcion;
-        productos.Stock = producto.Stock;
         productos.MedidaUnidad = producto.MedidaUnidad;
         productos.PrecioVenta = producto.PrecioVenta;
         productos.PrecioCompra = producto.PrecioCompra;
-        productos.StockMinimo = producto.StockMinimo;
         productos.ImagenUrl = producto.ImagenUrl;
         productos.CategoriaId = producto.CategoriaId;
         productos.ProveedorId = producto.ProveedorId;

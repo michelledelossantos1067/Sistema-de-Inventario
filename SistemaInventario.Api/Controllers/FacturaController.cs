@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using SistemaInventario.Application.Interfaces.Services;
 using SistemaInventario.Models.DTOs.Factura;
 
+namespace SistemaInventario.Api.Controllers;
 [ApiController]
 [Route("api/[controller]")]
 public class FacturaController : ControllerBase

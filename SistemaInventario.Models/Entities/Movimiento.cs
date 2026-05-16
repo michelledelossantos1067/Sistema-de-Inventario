@@ -7,7 +7,9 @@ public class Movimiento{
     public DateTime Fecha {get;set;}
     public TipoMovimiento Tipo {get;set;}
     public string Motivo {get;set;} = string.Empty;
-    public int Cantidad {get;set;}
+    public int Cantidad { get; set; }
+    public int AlmacenId { get; set; }
+    public Almacen? Almacen { get; set; }
 
     public int ProductoId {get;set;}
     public Producto? Producto {get;set;}
