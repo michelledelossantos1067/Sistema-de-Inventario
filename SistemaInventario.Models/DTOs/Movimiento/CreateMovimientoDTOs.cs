@@ -8,6 +8,7 @@ public class CreateMovimientoDTOs{
     public string Motivo {get;set;} = string.Empty;
     public int Cantidad {get;set;}
 
-    public int ProductoId {get;set;}
+    public int ProductoId { get; set; }
+    public int AlmacenId {get;set;}
     public int UsuarioId {get;set;}
 }

@@ -17,7 +17,7 @@ public class ErrorHandlingMiddleware
         {
             context.Response.StatusCode = 500;
             context.Response.ContentType = "application/json";
-            var error = new { message = ex.Message};
+            var error = new { message = ex.Message, inner = ex.InnerException?.Message };
             await context.Response.WriteAsJsonAsync(error);
         }
     }

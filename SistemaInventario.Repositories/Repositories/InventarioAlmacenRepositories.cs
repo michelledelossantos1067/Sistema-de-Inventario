@@ -18,6 +18,10 @@ public class InventarioAlmacenRepositories : IInventarioAlmacenRepositories{
     public async Task<InventarioAlmacen?> ObtenerPorId(int Id){
         return await _context.InventarioAlmacenes.FindAsync(Id);
     }
+    public async Task<InventarioAlmacen?> ObtenerPorProductoYAlmacen(int productoId, int almacenId)
+    {
+        return await _context.InventarioAlmacenes.FirstOrDefaultAsync(u => u.ProductoId == productoId && u.AlmacenId == almacenId);
+    }
     public async Task Crear(InventarioAlmacen inventarioAlmacen){
         await _context.InventarioAlmacenes.AddAsync(inventarioAlmacen);
         await _context.SaveChangesAsync();
