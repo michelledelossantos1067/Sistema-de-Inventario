@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaInventario.Application.Interfaces.Services;
 using SistemaInventario.Models.DTOs.Producto;
 namespace SistemaInventario.Api.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ProductoController : ControllerBase
@@ -29,12 +30,21 @@ public class ProductoController : ControllerBase
         }
         return Ok(producto);
     }
+    [Authorize(Roles = "Admin,Cajero")]
     [HttpPost]
     public async Task<IActionResult> Crear(CreateProductoDTOs createProductoDTOs)
     {
         await _productoServices.Crear(createProductoDTOs);
         return Created();
     }
+    [Authorize(Roles = "Admin,Cajero")]
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Actualizar(int Id,UpdateProductoDTOs updateProductoDTOs)
+    {
+        await _productoServices.Actualizar(Id,updateProductoDTOs);
+        return Ok();
+    }
+    [Authorize(Roles = "SuperAdmin,Admin")]
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Eliminar(int Id)
     {

@@ -1,8 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaInventario.Application.Interfaces.Services;
 using SistemaInventario.Models.DTOs.Movimiento;
 namespace SistemaInventario.Api.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class MovimientoController : ControllerBase
@@ -29,12 +30,14 @@ public class MovimientoController : ControllerBase
         }
         return Ok(movimiento);
     }
+    [Authorize(Roles = "Admin,Cajero")]
     [HttpPost]
     public async Task<IActionResult> Crear(CreateMovimientoDTOs createMovimientoDTOs)
     {
         await _movimientoServices.Crear(createMovimientoDTOs);
         return Created();
     }
+    [Authorize(Roles = "SuperAdmin")]
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Eliminar(int Id)
     {

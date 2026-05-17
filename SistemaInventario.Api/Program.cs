@@ -35,6 +35,8 @@ builder.Services.AddScoped<IProveedorServices, ProveedorServices>();
 builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
 builder.Services.AddScoped<IAlmacenServices, AlmacenServices>();
 builder.Services.AddScoped<IInventarioAlmacenServices, InventarioAlmacenServices>();
+builder.Services.AddScoped<IAuthServices, AuthService>();
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {

@@ -1,7 +1,7 @@
-using SistemaInventario.Models.Entities;
-using SistemaInventario.Application.Interfaces.Repositories;
-using SistemaInventario.Repositories.Database;
 using Microsoft.EntityFrameworkCore;
+using SistemaInventario.Application.Interfaces.Repositories;
+using SistemaInventario.Models.Entities;
+using SistemaInventario.Repositories.Database;
 
 
 namespace SistemaInventario.Repositories.Repositories;
@@ -33,6 +33,10 @@ public class UsuarioRepositories : IUsuarioRepositories{
         usuarios.Password = usuario.Password;
         usuarios.Rol = usuario.Rol;
         await _context.SaveChangesAsync();
+    }
+    public async Task<Usuario?> ObtenerPorEmail(string email)
+    {
+        return await _context.Usuarios.FirstOrDefaultAsync(c => c.Email == email);
     }
     public async Task Eliminar(int Id){
         var usuario = await _context.Usuarios.FindAsync(Id);

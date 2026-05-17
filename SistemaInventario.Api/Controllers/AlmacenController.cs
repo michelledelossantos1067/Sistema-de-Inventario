@@ -1,9 +1,9 @@
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaInventario.Application.Interfaces.Services;
 using SistemaInventario.Models.DTOs.Almacen;
 namespace SistemaInventario.Api.Controllers;
-
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class AlmacenController : ControllerBase
@@ -30,18 +30,21 @@ public class AlmacenController : ControllerBase
         }
         return Ok(almacen);
     }
+    [Authorize(Roles = "SuperAdmin")]
     [HttpPost]
     public async Task<IActionResult> Crear(CreateAlmacenDTOs createAlmacenDTOs)
     {
         await _almacenServices.Crear(createAlmacenDTOs);
         return Created();
     }
+    [Authorize(Roles = "SuperAdmin")]
     [HttpPut("{id}")]
     public async Task<IActionResult> Actualizar(int Id,UpdateAlmacenDTOs updateAlmacenDTOs)
     {
         await _almacenServices.Actualizar(Id,updateAlmacenDTOs);
         return Ok();
     }
+    [Authorize(Roles = "SuperAdmin")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> Eliminar(int Id)
     {

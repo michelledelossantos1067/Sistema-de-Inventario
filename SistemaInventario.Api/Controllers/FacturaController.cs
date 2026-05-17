@@ -1,8 +1,10 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SistemaInventario.Application.Interfaces.Services;
 using SistemaInventario.Models.DTOs.Factura;
 
 namespace SistemaInventario.Api.Controllers;
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class FacturaController : ControllerBase
@@ -29,18 +31,21 @@ public class FacturaController : ControllerBase
         }
         return Ok(factura);
     }
+    [Authorize(Roles = "Admin,Cajero")]
     [HttpPost]
     public async Task<IActionResult> Crear(CreateFacturaDTOs createFacturaDTOs)
     {
         await _facturaServices.Crear(createFacturaDTOs);
         return Created();
     }
+    [Authorize(Roles = "Admin,Cajero")]
     [HttpPut("{Id}")]
     public async Task<IActionResult> Actualizar(int Id, UpdateFacturaDTOs updateFacturaDTOs)
     {
         await _facturaServices.Actualizar(Id, updateFacturaDTOs);
         return Ok();
     }
+    [Authorize(Roles = "SuperAdmin,Admin")]
     [HttpDelete("{Id}")]
     public async Task<IActionResult> Eliminar(int Id)
     {
